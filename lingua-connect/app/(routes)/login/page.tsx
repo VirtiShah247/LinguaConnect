@@ -37,6 +37,12 @@ export default function Page() {
         return;
       }
       toast.success("Signed In Successfully!");
+      if(user.istutor){
+        router.push("/dashboardTutor");
+      }
+      else{
+        router.push("/dashboard");
+      }
       setTimeout(() => {
         router.push("/");
       }, 1000);

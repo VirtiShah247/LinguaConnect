@@ -54,6 +54,15 @@ function Navbar() {
                     My Classes
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/goLive"
+                    className="block py-2 px-3 text-white bg-fuchsia-700 rounded md:bg-transparent md:text-fuchsia-700 md:p-0 dark:text-white md:dark:text-fuchsia-500"
+                    aria-current="page"
+                  >
+                    Go Live
+                  </Link>
+                </li>
                 <div className="dropdown inline-block relative">
                   <button className="bg-transperent text-fuchsia-500 font-semibold rounded inline-flex items-center">
                     <span className="mr-1">
