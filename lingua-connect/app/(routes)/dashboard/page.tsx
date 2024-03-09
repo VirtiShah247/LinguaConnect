@@ -1,7 +1,13 @@
-import React from "react";
+import NewClassCard from "@/app/components/NewClassComponent/NewClassCard";
+import { getTutors } from "@/app/lib/getTutors";
 
-function Page() {
-  return <div>Page</div>;
+async function Page() {
+  const data = await getTutors();
+  return (
+    <div>
+      <NewClassCard />
+    </div>
+  );
 }
 
 export default Page;

@@ -30,7 +30,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   }
   
   const exixstingUser = await GetUserByEmail(email);
-  console.log('hereeee>>>>>>>>>>>>>>>>>>')
   if (exixstingUser.user?.email === email) {
     return NextResponse.json({
       message: "Account Already Exists!",
