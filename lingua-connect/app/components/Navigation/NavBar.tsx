@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 
 function Navbar() {
-    const { data: session, status } = useSession();
+  const { data: session, status } = useSession();
+  console.log(session?.user);
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 mb-5">
@@ -14,7 +15,7 @@ function Navbar() {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-            Home
+          Home
           {/* <Image
             src={img}
             className="h-8"
@@ -36,7 +37,7 @@ function Navbar() {
             </li>
             {session ? (
               <>
-                <li>
+                {/* <li>
                   <Link
                     href="/createBlog"
                     className="block py-2 px-3 text-white bg-fuchsia-700 rounded md:bg-transparent md:text-fuchsia-700 md:p-0 dark:text-white md:dark:text-fuchsia-500"
@@ -44,14 +45,14 @@ function Navbar() {
                   >
                     Create Blog
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/myBlogs"
                     className="block py-2 px-3 text-white bg-fuchsia-700 rounded md:bg-transparent md:text-fuchsia-700 md:p-0 dark:text-white md:dark:text-fuchsia-500"
                     aria-current="page"
                   >
-                    My Blogs
+                    My Classes
                   </Link>
                 </li>
                 <div className="dropdown inline-block relative">
@@ -70,7 +71,7 @@ function Navbar() {
                             }
                             alt="Rounded avatar"
                           ></Image>
-                          <span className="">{session.user?.name}</span>
+                          <span className="">{session?.user?.name}</span>
                         </div>
                       )}
                     </span>

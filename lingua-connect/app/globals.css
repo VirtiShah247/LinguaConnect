@@ -31,6 +31,10 @@ body {
     text-wrap: balance;
   }
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 h3{
   @apply text-xl font-semibold;
 }
