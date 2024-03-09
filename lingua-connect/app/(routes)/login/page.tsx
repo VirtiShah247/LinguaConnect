@@ -11,6 +11,7 @@ export default function Page() {
   const [user, setUser] = useState<any>({
     email: "",
     password: "",
+    istutor: false,
   });
 
   const onSignup = async (event: any) => {
@@ -28,6 +29,7 @@ export default function Page() {
       const res = await signIn("credentials", {
         email: user.email,
         password: user.password,
+        istutor: user.istutor,
         redirect: false,
       });
       if (res?.error) {
@@ -80,6 +82,18 @@ export default function Page() {
                   className="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                 ></input>
               </div>
+            </div>
+
+            <div className="mt-3">
+              <input
+                type="checkbox"
+                id="featuredPost"
+                name="feturedPost"
+                onChange={() => {
+                  setUser({ ...user, isTutor: !user.isTutor });
+                }}
+              />
+              <label htmlFor="featuredPost">A tutor?</label>
             </div>
 
             <div>

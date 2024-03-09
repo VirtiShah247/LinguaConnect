@@ -19,16 +19,24 @@ const CreateNextUserMutation = gql`
   }
 `;
 
+const CreateNextTutorMutation = gql`
+  mutation createTutor($userData: TutorCreateInput!) {
+    createTutor(data: $userData) {
+      id
+    }
+  }
+`;
+
 export async function POST(req: NextRequest, res: NextResponse) {
-  const { email, password, name }: any = await req.json();
-  console.log({ email, password, name });
+  const { email, password, name, isTutor }: any = await req.json();
+  console.log({ email, password, name, isTutor });
   if (!email || !password || !name) {
     return NextResponse.json({
       message: "Please fill all the fields",
       success: false,
     });
   }
-  
+
   const exixstingUser = await GetUserByEmail(email);
   if (exixstingUser.user?.email === email) {
     return NextResponse.json({
@@ -42,9 +50,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
     password: hashedPassword,
     name,
   };
-  const response: any = await client.request(CreateNextUserMutation, {
-    userData,
-  });
+
+  if (isTutor) {
+    const response: any = await client.request(CreateNextTutorMutation, {
+      userData,
+    });
+  } else {
+    const response: any = await client.request(CreateNextUserMutation, {
+      userData,
+    });
+  }
   return NextResponse.json({
     message: "User Created Successfully!",
     status: 200,
