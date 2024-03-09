@@ -5,7 +5,7 @@ const { NEXT_PUBLIC_GRAPHCMS_ENDPOINT, NEXT_PUBLIC_HYGRAPH_TOKEN } =
 const client = new GraphQLClient(NEXT_PUBLIC_GRAPHCMS_ENDPOINT as string, {
   headers: {
     Authorization: `Bearer ${NEXT_PUBLIC_HYGRAPH_TOKEN}`,
-  }
+  },
 });
 
 export async function GET() {
@@ -15,8 +15,8 @@ export async function GET() {
         edges {
           node {
             tutor {
-              name
               id
+              name
               language
             }
             endTime
@@ -29,5 +29,5 @@ export async function GET() {
 
   const response: any = await client.request(query);
   console.log(response.classesConnection.edges);
-    return NextResponse.json({ tutors: response.classesConnection.edges });
+  return NextResponse.json({ tutors: response.classesConnection.edges });
 }
