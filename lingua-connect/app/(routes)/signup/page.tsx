@@ -11,6 +11,7 @@ export default function Page() {
     name: "",
     email: "",
     password: "",
+    isTutor: false,
   });
   const onSignup = async (event: any) => {
     event.preventDefault();
@@ -119,6 +120,20 @@ export default function Page() {
                   className="block p-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                 ></input>
               </div>
+            </div>
+
+            <div className="mt-3">
+              <input
+                type="checkbox"
+                id="featuredPost"
+                name="feturedPost"
+                onChange={() => {
+                  setUser({ ...user, isTutor: !user.isTutor });
+                }}
+              />
+              <label htmlFor="featuredPost">
+                A tutor?
+              </label>
             </div>
 
             <div>

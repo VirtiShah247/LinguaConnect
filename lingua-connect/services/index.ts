@@ -22,10 +22,27 @@ const GetUserByEmail = async (email: string) => {
     }
   `;
 
+  const getTutorByEmailQuery = gql`
+    query MyQuery($email: String!) {
+      tutor(where: { email: $email }) {
+        id
+        name
+        email
+        password
+      }
+    }
+  `;
+
   const getUserResponse: any = await client.request(getUserByEmailQuery, {
     email,
   });
-  console.log(getUserResponse.student);
+  console.log("user response", getUserResponse.student);
+  if (getUserResponse.student === null) {
+    const getTutorRespose: any = await client.request(getTutorByEmailQuery, {
+      email,
+    });
+    return { user: getTutorRespose.tutor };
+  }
   return { user: getUserResponse.student };
 };
 
