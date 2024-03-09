@@ -45,7 +45,7 @@ function SlotsTable(props:any) {
                 </tr>
             </thead>
             <tbody className="text-black">
-                {
+                {slots && 
                     slots.map((slot:any) => {
                         return <tr key={slot?.tutor?.node?.id} className={`border-b border-gray-200 p-5 text-sm focus:bg-gray-500`}
                         >
