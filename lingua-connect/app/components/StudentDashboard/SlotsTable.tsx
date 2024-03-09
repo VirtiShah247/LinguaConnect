@@ -33,7 +33,7 @@ function SlotsTable(props:any) {
         setClicked(true);
     }
     const slots = props.slotsData;
-    console.log(slots[0].tutor);
+    console.log("slots are>>>>>>>>>>>>>>>>>>>>",slots);
     return (
         <table className="w-full leading-normal text-black">
             <thead>
@@ -69,25 +69,25 @@ function SlotsTable(props:any) {
                 </tr>
             </thead>
             <tbody className="text-black">
-                {
+                {slots && 
                     slots.map((slot:any) => {
-                        return <tr key={slot.tutor.id} className={`border-b border-gray-200 p-5 text-sm focus:bg-gray-500 ${slot.status !== 'available' ? 'cursor-not-allowed' : 'cursor-grab'}`}
+                        return <tr key={slot.node.tutor.id} className={`border-b border-gray-200 p-5 text-sm focus:bg-gray-500 ${slot.status !== 'available' ? 'cursor-not-allowed' : 'cursor-grab'}`}
                         onClick={() => { if (slot.status === 'available') handleSlotClick(); }}>
                         <td className="border-b border-gray-200 p-5 text-sm ">
                             <div className="flex items-center">
                                 <div className="ml-3">
-                                    <p className="whitespace-nowrap">{slot.tutor.name}</p>
+                                    <p className="whitespace-nowrap">{slot.node.tutor.name}</p>
                                 </div>
                             </div>
                         </td>
                         <td className="border-b border-gray-200 p-5 text-sm">
-                            <p className="whitespace-nowrap">{slot.tutor.language}</p>
+                            <p className="whitespace-nowrap">{slot.node.tutor.language}</p>
                         </td>
                         <td className="border-b border-gray-200 p-5 text-sm">
-                            <p className="whitespace-nowrap">{slot.startTime}</p>
+                            <p className="whitespace-nowrap">{slot.node.startTime}</p>
                         </td>
                         <td className="border-b border-gray-200 p-5 text-sm">
-                            <p className="whitespace-nowrap">{slot.endTime}</p>
+                            <p className="whitespace-nowrap">{slot.node.endTime}</p>
                         </td>
                         <td className="border-b border-gray-200 p-5 text-sm">
                             <span className="relative inline-block px-3 py-1 font-semibold leading-tight">
@@ -95,7 +95,7 @@ function SlotsTable(props:any) {
                                     aria-hidden="true"
                                     className="absolute inset-0 rounded-full bg-green-200 opacity-50"
                                 />
-                                <span className="relative">{slot.tutor.available}</span>
+                                <span className="relative">{slot.node.tutor.available}</span>
                             </span>
                         </td>
                     </tr>

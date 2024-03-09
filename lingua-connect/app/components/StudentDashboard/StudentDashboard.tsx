@@ -18,7 +18,7 @@ function StudentDashboard(props:any) {
                             Get started by creating a new class.
                         </p>
                     </div>
-                    <Button className='bg-customPurple text-white w-40 h-10 flex justify-center items-center text-white rounded'>
+                    <Button className='bg-customPurple w-40 h-10 flex justify-center items-center text-white rounded'>
                         + New Class
                     </Button>
                 </div>
