@@ -17,8 +17,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json({ extended: false }));
 
-connectDb();
-
 app.use("/api/student", studentRoutes);
 
 app.use((req, res, next) => {
